@@ -10,14 +10,18 @@ class RecentlyPlayedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Row(
           children: [
             Container(
-                width: 60,
-                height: 60,
-                child: Image.network(recentlyPlayed.image, fit: BoxFit.cover)),
+              width: 60,
+              height: 60,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.network(recentlyPlayed.image, fit: BoxFit.cover),
+              ),
+            ),
             SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.only(left: 10.0),

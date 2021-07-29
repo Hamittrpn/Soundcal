@@ -9,6 +9,7 @@ import 'package:soundcal/constants/color_constants.dart';
 import 'package:soundcal/models/radio.dart';
 import 'package:soundcal/widgets/blob.dart';
 import 'package:soundcal/widgets/recently_played_card.dart';
+import 'package:soundcal/widgets/wave_drawer.dart';
 import 'package:wave/config.dart';
 import 'dart:math' show pi;
 
@@ -56,8 +57,8 @@ class _ListenPageState extends State<ListenPage> {
   @override
   void initState() {
     super.initState();
-    setupAlan();
     fetchRadios();
+    setupAlan();
 
     _audioPlayer.onPlayerStateChanged.listen((event) {
       if (event == PlayerState.PLAYING) {
@@ -160,88 +161,71 @@ class _ListenPageState extends State<ListenPage> {
         ),
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: EdgeInsets.only(top: 10),
-              height: 140,
-              child: ListView(
-                physics: BouncingScrollPhysics(),
-                children: ListTile.divideTiles(context: context, tiles: [
-                  ListTile(
-                    leading: Icon(
-                      Icons.favorite,
-                      color: kSecondaryColor,
-                    ),
-                    title: Text(
-                      "Favorite Stations",
-                      style: TextStyle(
-                          color: kSecondaryColor, fontWeight: FontWeight.w500),
-                    ),
-                    trailing: Icon(
-                      Icons.keyboard_arrow_right,
-                      size: 30,
-                      color: Colors.grey.shade400,
-                    ),
+            ListView(
+              shrinkWrap: true,
+              physics: BouncingScrollPhysics(),
+              children: ListTile.divideTiles(context: context, tiles: [
+                ListTile(
+                  leading: Icon(
+                    Icons.favorite,
+                    color: kSecondaryColor,
                   ),
-                  ListTile(
-                    leading: Icon(
-                      Icons.qr_code_scanner_rounded,
-                      color: kSecondaryColor,
-                    ),
-                    title: Text(
-                      "Smart Scans",
-                      style: TextStyle(
-                          color: kSecondaryColor, fontWeight: FontWeight.w500),
-                    ),
-                    trailing: Icon(
-                      Icons.keyboard_arrow_right,
-                      size: 30,
-                      color: Colors.grey.shade400,
-                    ),
+                  title: Text(
+                    "Favorite Stations",
+                    style: TextStyle(
+                        color: kSecondaryColor, fontWeight: FontWeight.w500),
                   ),
-                ]).toList(),
-              ),
+                  trailing: Icon(
+                    Icons.keyboard_arrow_right,
+                    size: 30,
+                    color: Colors.grey.shade400,
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.qr_code_scanner_rounded,
+                    color: kSecondaryColor,
+                  ),
+                  title: Text(
+                    "Smart Scans",
+                    style: TextStyle(
+                        color: kSecondaryColor, fontWeight: FontWeight.w500),
+                  ),
+                  trailing: Icon(
+                    Icons.keyboard_arrow_right,
+                    size: 30,
+                    color: Colors.grey.shade400,
+                  ),
+                ),
+              ]).toList(),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
               child: Text(
                 "Recently Played",
                 style: AppTextStyle.BODY_TEXT,
               ),
             ),
             SizedBox(height: 10),
-            Container(
-              child: ListView.separated(
-                itemBuilder: (context, index) {
-                  return RecentlyPlayedCard(
-                    recentlyPlayed: radios[index],
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return SizedBox(height: 10);
-                },
-                itemCount: 5,
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-              ),
+            ListView.separated(
+              itemBuilder: (context, index) {
+                return RecentlyPlayedCard(
+                  recentlyPlayed: radios[index],
+                );
+              },
+              separatorBuilder: (context, index) {
+                return SizedBox(height: 15);
+              },
+              itemCount: 5,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SizedBox(
-                height: 50,
-                width: 50,
-                child: PlayButton(
-                  pauseIcon: Icon(Icons.pause, color: kPrimaryColor, size: 30),
-                  playIcon:
-                      Icon(Icons.play_arrow, color: kPrimaryColor, size: 30),
-                  onPressed: () {},
-                ),
-              ),
-            ),
+            WaveDrawer(),
           ],
         ),
       ),

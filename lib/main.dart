@@ -40,6 +40,7 @@ class _MyAppState extends State<MyApp> {
         bottomNavigationBar: SizedBox(
           height: 80,
           child: BottomNavigationBar(
+            elevation: 0,
             currentIndex: currentIndex,
             type: BottomNavigationBarType.fixed,
             onTap: (index) => setState(() => currentIndex = index),
