@@ -33,6 +33,7 @@ class _WaveDemoHomePageState extends State<WaveDemoHomePage> {
         elevation: 0,
         child: WaveWidget(
           config: config,
+          
           backgroundColor: backgroundColor,
           size: Size(double.infinity, double.infinity),
           waveAmplitude: 0,
