@@ -54,6 +54,11 @@ flutter:
   assets:
     - lib/assets/radio.json
     - lib/assets/Images/virginRadio.png
+    - lib/assets/Images/blues.jpg
+    - lib/assets/Images/hiphop1.jpeg
+    - lib/assets/Images/hiphop2.jpeg
+    - lib/assets/Images/jazz.png
+    - lib/assets/Images/rock3.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

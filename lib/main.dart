@@ -6,6 +6,7 @@ import 'package:soundcal/constants/color_constants.dart';
 import 'package:soundcal/screens/listen_page.dart';
 import 'package:soundcal/screens/profile_page.dart';
 import 'package:soundcal/screens/search_page.dart';
+import 'package:soundcal/widgets/search_bar.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -22,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   int currentIndex = 0;
   final _tabs = [
     ListenPage(),
-    SearchPage(),
+    SearchBar(),
     ProfilePage(),
   ];
   @override
