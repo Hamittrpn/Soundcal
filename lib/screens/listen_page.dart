@@ -20,7 +20,7 @@ class _ListenPageState extends State<ListenPage> {
   List<MyRadio> radios;
   MyRadio _selectedRadio;
   Color _selectedColor;
-  bool _isPlaying;
+  bool _isPlaying = false;
 
   Config config;
   double height = 152.0;
@@ -79,6 +79,7 @@ class _ListenPageState extends State<ListenPage> {
     switch (response["command"]) {
       case "play":
         _playMusic(_selectedRadio.url);
+
         break;
       case "play_channel":
         final id = response["id"];
@@ -140,7 +141,6 @@ class _ListenPageState extends State<ListenPage> {
 
   @override
   Widget build(BuildContext context) {
-    Color backgroundColor = Colors.transparent;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -223,7 +223,9 @@ class _ListenPageState extends State<ListenPage> {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
             ),
-            WaveDrawer(),
+            WaveDrawer(
+              isPlaying: _isPlaying,
+            ),
           ],
         ),
       ),

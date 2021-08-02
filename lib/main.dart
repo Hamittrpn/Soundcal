@@ -6,7 +6,6 @@ import 'package:soundcal/constants/color_constants.dart';
 import 'package:soundcal/screens/listen_page.dart';
 import 'package:soundcal/screens/profile_page.dart';
 import 'package:soundcal/screens/search_page.dart';
-import 'package:soundcal/widgets/search_bar.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -23,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   int currentIndex = 0;
   final _tabs = [
     ListenPage(),
-    SearchBar(),
+    SearchPage(),
     ProfilePage(),
   ];
   @override
@@ -53,21 +52,30 @@ class _MyAppState extends State<MyApp> {
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.only(bottom: 9.0),
-                  child: Icon(Icons.play_arrow ,size: 26,),
+                  child: Icon(
+                    Icons.play_arrow,
+                    size: 26,
+                  ),
                 ),
                 label: 'Listen Now',
               ),
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.only(bottom: 9.0),
-                  child: Icon(CupertinoIcons.search,size: 26,),
+                  child: Icon(
+                    CupertinoIcons.search,
+                    size: 26,
+                  ),
                 ),
                 label: 'Search',
               ),
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.only(bottom: 9.0),
-                  child: Icon(CupertinoIcons.person_crop_circle, size: 26,),
+                  child: Icon(
+                    CupertinoIcons.person_crop_circle,
+                    size: 26,
+                  ),
                 ),
                 label: 'Profile',
               ),

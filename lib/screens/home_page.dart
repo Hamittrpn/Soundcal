@@ -156,7 +156,6 @@ class _HomePageState extends State<HomePage> {
               ], begin: Alignment.topLeft, end: Alignment.bottomRight))
               .make(),
           [
-            //"editor.quickSuggestions.comments"
             AppBar(
               title: "Soundcal".text.xl4.bold.wide.make().shimmer(
                   primaryColor: Vx.purple300, secondaryColor: Colors.white),
@@ -185,8 +184,8 @@ class _HomePageState extends State<HomePage> {
           ].vStack(alignment: MainAxisAlignment.start),
           radios != null
               ? Padding(
-                padding: const EdgeInsets.only(top: 40.0),
-                child: VxSwiper.builder(
+                  padding: const EdgeInsets.only(top: 40.0),
+                  child: VxSwiper.builder(
                     itemCount: radios.length,
                     aspectRatio: 1.0,
                     enlargeCenterPage: true,
@@ -205,8 +204,9 @@ class _HomePageState extends State<HomePage> {
                             top: 0.0,
                             right: 0.0,
                             child: VxBox(
-                              child:
-                                  rad.category.text.uppercase.white.make().px16(),
+                              child: rad.category.text.uppercase.white
+                                  .make()
+                                  .px16(),
                             )
                                 .height(40)
                                 .black
@@ -252,7 +252,7 @@ class _HomePageState extends State<HomePage> {
                       }).p16();
                     },
                   ).centered(),
-              )
+                )
               : Center(
                   child: CircularProgressIndicator(
                     backgroundColor: Colors.white,
